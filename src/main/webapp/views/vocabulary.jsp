@@ -44,11 +44,11 @@
 	</div>
 	<div
 		class="container bg-white mt-0 d-flex justify-content-end position-sticky top-0 sticky-div">
-		<form ng-app="searchName" ng-controller="searchNameCtrl" action=""
-			class="d-flex">
-			<div class="mb-3 mt-3 me-3">
-				<input ng-model="name" type="text" class="form-control" name=""
-					id="" aria-describedby="helpId" placeholder="Nhập tên từ vựng" />
+		<form action="/mylib/vocabulary/searchName">
+			<div class="mb-3 mt-3 me-3 d-flex">
+				<input type="text" class="form-control" name="name" id=""
+					aria-describedby="helpId" placeholder="Nhập tên của từ" />
+				<button type="submit" class="btn btn-success float-end">Tìm</button>
 			</div>
 		</form>
 		<form action="">
@@ -79,14 +79,12 @@
 				<div class="card text-start border-0">
 					<div class="card-body">
 						<form:input path="index" type="text" class="form-control collapse"
-							name="word" id="" aria-describedby="helpId"
-							placeholder="vocabulary" />
+							name="word" id="" aria-describedby="helpId" placeholder="" />
 						<div class="mb-3">
 							<label for="" class="form-label">Nhập tên từ vựng tiếng
 								anh</label>
 							<form:input path="name" type="text" class="form-control"
-								name="word" id="" aria-describedby="helpId"
-								placeholder="" />
+								name="word" id="" aria-describedby="helpId" placeholder="" />
 							<!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
 						</div>
 						<div class="mb-3">
@@ -109,13 +107,13 @@
 						<div class="mb-3">
 							<label for="" class="form-label">Nghĩa của từ</label>
 							<form:textarea class="form-control" name="descript" id=""
-								rows="2" placeholder="" path="mean"></form:textarea>
+								rows="2" placeholder="" path=""></form:textarea>
 							<!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
 						</div>
 						<div class="mb-3">
 							<label for="" class="form-label">Ghi chú</label>
 							<form:textarea class="form-control" name="descript" id=""
-								rows="5" placeholder="description" path=""></form:textarea>
+								rows="5" placeholder="" path=""></form:textarea>
 						</div>
 						<a name="" id="" class="btn btn-outline-info float-end ms-3"
 							href="/mylib/vocabulary/index" role="button">làm mới</a>
@@ -129,7 +127,7 @@
 				</div>
 			</form:form>
 		</div>
-		<div class="col-12 col-sm-8 offset-4 mt-1 me-0">
+		<div class="col-12 col-sm-8 offset-4 mt-1">
 			<div class="table-responsive">
 				<table class="table">
 					<thead class="">
@@ -164,12 +162,6 @@
 		</div>
 	</main>
 	<!-- Bootstrap JavaScript Libraries -->
-	<script>
-		var app = angular.module('searchName', []);
-		app.controller('searchNameCtrl', function($scope) {
-			$scope.name = "";
-		});
-	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

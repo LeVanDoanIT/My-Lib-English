@@ -53,6 +53,7 @@ public class vacabularyCtrl {
 		word.setName(word.getName().trim());
 		word.setMean(word.getMean().trim());
 		word.setDescript(word.getDescript().trim());
+		System.out.println(word);
 		try {
 			Boolean check = true;
 			List<vocabularyEntity> list = vocaDao.findByName(word.getName().trim());

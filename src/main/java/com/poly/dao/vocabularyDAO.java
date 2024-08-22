@@ -18,5 +18,5 @@ public interface vocabularyDAO extends JpaRepository<vocabularyEntity, Long>{
 	@Query("UPDATE vocabularyEntity e SET e.name = :name, e.type = :type, e.mean = :mean, e.descript = :descript WHERE e.index = :id")
      Integer updateWordById(Long id, String name, String type, String mean, String descript);
 	
-	 List<vocabularyEntity> findByNameContainingIgnoreCase(String name);
+	 
 }
