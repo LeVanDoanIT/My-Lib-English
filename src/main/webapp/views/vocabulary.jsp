@@ -86,7 +86,7 @@
 								anh</label>
 							<form:input path="name" type="text" class="form-control"
 								name="word" id="" aria-describedby="helpId"
-								placeholder="vocabulary" />
+								placeholder="" />
 							<!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
 						</div>
 						<div class="mb-3">
@@ -109,13 +109,13 @@
 						<div class="mb-3">
 							<label for="" class="form-label">Nghĩa của từ</label>
 							<form:textarea class="form-control" name="descript" id=""
-								rows="2" placeholder="mean" path="mean"></form:textarea>
+								rows="2" placeholder="" path="mean"></form:textarea>
 							<!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
 						</div>
 						<div class="mb-3">
 							<label for="" class="form-label">Ghi chú</label>
 							<form:textarea class="form-control" name="descript" id=""
-								rows="5" placeholder="description" path="descript"></form:textarea>
+								rows="5" placeholder="description" path=""></form:textarea>
 						</div>
 						<a name="" id="" class="btn btn-outline-info float-end ms-3"
 							href="/mylib/vocabulary/index" role="button">làm mới</a>
@@ -129,10 +129,10 @@
 				</div>
 			</form:form>
 		</div>
-		<div class="col-12 col-sm-8 offset-4 mt-1">
+		<div class="col-12 col-sm-8 offset-4 mt-1 me-0">
 			<div class="table-responsive">
 				<table class="table">
-					<thead class="table-">
+					<thead class="">
 						<tr class="">
 							<th scope="col">STT</th>
 							<th scope="row">Tên từ vựng</th>
