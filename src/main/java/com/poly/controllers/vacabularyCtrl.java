@@ -28,7 +28,7 @@ public class vacabularyCtrl {
 
 	@GetMapping("vocabulary/index")
 	public String index(Model model) {
-		model.addAttribute("action","add");
+		model.addAttribute("action", "add");
 		vocabularyEntity word = new vocabularyEntity();
 		setWord(null, word);
 		model.addAttribute("word", word);
@@ -41,12 +41,12 @@ public class vacabularyCtrl {
 
 	@PostMapping("vocabulary/add")
 	public String save(Model model, @ModelAttribute("word") vocabularyEntity word) {
-		model.addAttribute("action","add");
-		String message = "Vui lòng nhập ô tên của từ và nghĩa của từ!";
+		model.addAttribute("action", "add");
+		String message = "Hãy nhập ô tên của từ và nghĩa của từ!";
 		String typeMessage = "collapse";
 		String type_alert = "alert-danger";
 		Long maxIndex = vocaDao.findMaxIndex();
-		if(maxIndex == null) {
+		if (maxIndex == null) {
 			maxIndex = 0L;
 		}
 		word.setIndex(maxIndex + 1);
@@ -96,7 +96,7 @@ public class vacabularyCtrl {
 
 	@RequestMapping("/vocabulary/delete/{id}")
 	public String delete(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("action","add");
+		model.addAttribute("action", "add");
 		vocaDao.deleteById(id);
 		vocabularyEntity word = new vocabularyEntity();
 		setWord(null, word);
@@ -107,12 +107,11 @@ public class vacabularyCtrl {
 		model.addAttribute("list_vocabulary", list_vocabulary);
 		return "vocabulary";
 	}
-	
+
 	@RequestMapping("/vocabulary/edit/{id}")
 	public String edit(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("action","edit");
+		model.addAttribute("action", "edit");
 		vocabularyEntity word = vocaDao.getOne(id);
-		System.out.println(word+"từ");
 		model.addAttribute("word", word);
 		List<vocabularyEntity> list_vocabulary = vocaDao.findAll();
 		model.addAttribute("type_btn_edit", "show");
@@ -120,14 +119,24 @@ public class vacabularyCtrl {
 		model.addAttribute("list_vocabulary", list_vocabulary);
 		return "vocabulary";
 	}
-	
+
 	@RequestMapping("/vocabulary/edit")
-	public String todoEdit(Model model ,@ModelAttribute("word") vocabularyEntity word) {
-		model.addAttribute("action","edit");
-		vocaDao.save(word);		
-		String message = "Cập nhật thành công!";
-		String typeMessage = "show";
-		String type_alert = "alert-success";
+	public String todoEdit(Model model, @ModelAttribute("word") vocabularyEntity word) {
+		model.addAttribute("action", "edit");
+		String message = "Hãy nhập ô tên của từ và nghĩa của từ!";
+		String typeMessage = "collapse";
+		String type_alert = "alert-danger";
+		try {
+			word.setName(word.getName().trim());
+			word.setMean(word.getMean().trim());
+			word.setDescript(word.getDescript().trim());
+			vocaDao.save(word);
+			message = "Cập nhật thành công!";
+			typeMessage = "show";
+			type_alert = "alert-success";
+		} catch (TransactionSystemException e) {
+			typeMessage = "show";
+		}
 		model.addAttribute("typeMessage", typeMessage);
 		model.addAttribute("type_alert", type_alert);
 		model.addAttribute("message", message);

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Đoàn đẹpt trai</title>
+<title>Đoàn đẹp trai</title>
 <!-- Required meta tags -->
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -36,29 +36,24 @@
 
 <body class="bg-light">
 	<div id="div1"
-		class="alert ${type_alert} alert-dismissible fade ${typeMessage} w-50 position-fixed top-0 end-0 overlay-div p-3 mt-1 left-1 me-5"
+		class="alert ${type_alert} alert-dismissible fade ${typeMessage} w-25 position-fixed top-0 end-0 overlay-div p-3 mt-1 left-1 me-5"
 		role="alert">
 		<strong>${message}</strong>
 		<button type="button" class="btn-close" data-bs-dismiss="alert"
 			aria-label="Close"></button>
 	</div>
 	<div
-		class="container bg-white mt-0 d-flex justify-content-end position-sticky top-0 sticky-div">
-		<form ng-app="searchName" ng-controller="searchNameCtrl" action=""
-			class="d-flex">
-			<div class="mb-3 mt-3 me-3">
-				<input ng-model="name" type="text" class="form-control" name=""
-					id="" aria-describedby="helpId" placeholder="Nhập tên từ vựng" />
-			</div>
-		</form>
-		<form action="">
-			<div class="mb-3 mt-3 me-3">
-				<input type="text" class="form-control" name="" id=""
-					aria-describedby="helpId" placeholder="Nhập nghĩa của từ" />
-			</div>
-		</form>
-		<form action="">
-			<select class="form-select mt-3 me-3" name="" id="">
+		class="container bg-white mt-0 d-flex justify-content-start position-sticky top-0 sticky-div">
+		<div class="mb-3 mt-3 me-3">
+			<input type="text" class="form-control" name="" id="name"
+				aria-describedby="helpId" placeholder="Nhập tên từ vựng" />
+		</div>
+		<div class="mb-3 mt-3 me-3">
+			<input type="text" class="form-control" name="" id="mean"
+				aria-describedby="helpId" placeholder="Nhập nghĩa của từ" />
+		</div>
+		<div class="mb-3 mt-3 me-3">
+			<select class="form-select me-3" name="" id="type">
 				<option value="all">--- Chọn từ loại ---</option>
 				<option value="Noun (Danh từ)">Noun (Danh từ)</option>
 				<option value="Pronoun (Đại từ)">Pronoun (Đại từ)</option>
@@ -70,7 +65,11 @@
 				<option value="Interjection (Thán từ)">Interjection (Thán
 					từ)</option>
 			</select>
-		</form>
+		</div>
+		<div class="mb-3 mt-3 me-3">
+			<button onclick="search()" type="button" id=""
+				class=" btn btn-primary float-end">Tìm kiếm</button>
+		</div>
 	</div>
 	<main class="container pt-4">
 		<div class="col-12 col-sm-3 fixed-top mt-5 ms-5 ps-3 pt-5 ms-3">
@@ -85,8 +84,7 @@
 							<label for="" class="form-label">Nhập tên từ vựng tiếng
 								anh</label>
 							<form:input path="name" type="text" class="form-control"
-								name="word" id="" aria-describedby="helpId"
-								placeholder="" />
+								name="word" id="" aria-describedby="helpId" placeholder="" />
 							<!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
 						</div>
 						<div class="mb-3">
@@ -115,7 +113,7 @@
 						<div class="mb-3">
 							<label for="" class="form-label">Ghi chú</label>
 							<form:textarea class="form-control" name="descript" id=""
-								rows="5" placeholder="description" path=""></form:textarea>
+								rows="5" placeholder="" path=""></form:textarea>
 						</div>
 						<a name="" id="" class="btn btn-outline-info float-end ms-3"
 							href="/mylib/vocabulary/index" role="button">làm mới</a>
@@ -164,11 +162,13 @@
 		</div>
 	</main>
 	<!-- Bootstrap JavaScript Libraries -->
-	<script>
-		var app = angular.module('searchName', []);
-		app.controller('searchNameCtrl', function($scope) {
-			$scope.name = "";
-		});
+	<script type="text/javascript">
+		function search() {
+			let name = document.getElementById("name").value;
+			let mean = document.getElementById("mean").value;
+			let type = document.getElementById("type").value;
+			window.location.href = "http://localhost:8080/mylib/vocabulary/search/name?name="+ name+"&mean=" + mean + "&type=" + type;
+		}
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
